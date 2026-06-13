@@ -1,4 +1,4 @@
-"""Calibrated cross-grid Marmousi2 pilot.
+"""Calibrated cross-grid Marmousi2 experiment utilities.
 
 Fine-grid shot gathers are scaled shot-by-shot to match the coarse solver
 response at the initial model. This removes source-amplitude/discretization

@@ -13,25 +13,6 @@ from scipy.ndimage import gaussian_filter
 NPAD = 12  # absorbing layer thickness (cells)
 
 
-def marmousi_subset(nx=200, nz=80, seed=0):
-    rng = np.random.default_rng(seed)
-    z = np.linspace(0, 1, nz); x = np.linspace(0, 1, nx)
-    Z, X = np.meshgrid(z, x, indexing="ij")
-    v = 1500.0 + 3000.0 * Z
-    layers = [(0.20,0.04,250.),(0.32,0.04,-200.),(0.45,0.05,350.),
-              (0.60,0.05,-150.),(0.75,0.05,300.)]
-    for z0, sigma, dv in layers:
-        v += dv * np.exp(-((Z - z0) ** 2) / (2 * sigma ** 2))
-    fault = (0.55 - 0.35 * X)
-    wedge = np.exp(-((Z - fault) ** 2) / (2 * 0.04 ** 2)) * (X > 0.25) * (X < 0.75)
-    v += 600.0 * wedge
-    salt_r2 = ((Z - 0.78) / 0.10) ** 2 + ((X - 0.70) / 0.18) ** 2
-    v += 800.0 * np.exp(-salt_r2)
-    noise = gaussian_filter(rng.standard_normal(v.shape), sigma=2.0)
-    v += 60.0 * noise
-    return np.clip(v, 1500.0, 5500.0).astype(np.float64)
-
-
 def marmousi2_real_subset(
     nx=100,
     nz=36,

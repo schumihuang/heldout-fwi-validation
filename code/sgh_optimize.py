@@ -1,8 +1,8 @@
-"""Structure-gated hybrid proximal FWI pilot drivers.
+"""Structure-gated hybrid proximal FWI utilities.
 
-This module implements a first Marmousi2-centered pilot for the revised
-method concept. It keeps the background model fixed and optimizes a gated
-pixel residual:
+This module implements the structure-gated residual split optimization
+utilities used in the Marmousi2 cross-grid validation experiments. It keeps
+the background model fixed and optimizes a gated pixel residual:
 
     c = c_bg + g * r
 
@@ -90,7 +90,7 @@ def run_sgh_vsp_fwi(
     data_iter=5,
     tv_iter=60,
 ):
-    """Structure-gated residual split proximal FWI pilot."""
+    """Run structure-gated residual split proximal FWI."""
     if gate is None:
         gate, _ = gradient_structure_gate(
             c_bg, obs_by_band[gate_from_band], acq_by_band[gate_from_band]
