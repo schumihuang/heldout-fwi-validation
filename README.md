@@ -15,11 +15,8 @@ figure-generation scripts used in the manuscript submitted to
 Public repository URL to cite in the manuscript:
 
 ```text
-https://github.com/OWNER/heldout-fwi-validation
+https://github.com/schumihuang/heldout-fwi-validation
 ```
-
-Replace `OWNER` with the final GitHub account or organization name after
-the repository is created.
 
 ## Repository Contents
 
