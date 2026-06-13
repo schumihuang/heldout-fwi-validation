@@ -1,0 +1,17 @@
+{
+  "source_url": "http://www.agl.uh.edu/downloads/vp_marmousi-ii.segy.gz",
+  "tracecount": 13601,
+  "samples_per_trace": 2801,
+  "shape_depth_x": [
+    2801,
+    13601
+  ],
+  "velocity_units": "m/s",
+  "min_velocity": 1027.9998779296875,
+  "max_velocity": 4699.999809265137,
+  "sha256": {
+    "vp_marmousi-ii.segy.gz": "2c7a0c4170c95a15620c2146573711c61a4cef8dc27338ef6c211a81ffa68920",
+    "vp_marmousi-ii.segy": "2722a5de0645d8fcf5750f380893d4875383af9b24988ece0bd07b943f5b0c91",
+    "vp_marmousi2.npy": "fccdbfdfc4e73f3729a8cbb33c695425ed4a8482bfc6a98fabe8788d6eb47763"
+  }
+}

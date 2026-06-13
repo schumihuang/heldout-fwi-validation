@@ -1,0 +1,7 @@
+numpy
+scipy
+matplotlib
+segyio
+# torch is required only for the future LFIP benchmark implementation.
+# Install the appropriate PyTorch build for the local CUDA/CPU setup from:
+# https://pytorch.org/get-started/locally/
