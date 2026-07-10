@@ -367,6 +367,33 @@ important pattern is not merely early stopping; it is the separation
 between training and validation behavior. The final model is a better fit
 to the training shots but a worse prediction for held-out shots.
 
+Table~\ref{tab:cost} gives the computational accounting for the primary
+run. The table reports shot-equivalent wave-equation solves rather than
+hardware-specific timings: each L-BFGS-B objective/gradient evaluation
+uses one forward and one adjoint solve per training shot, whereas each
+validation checkpoint uses forward solves only for the held-out shots. In
+this small reproducible audit run, the validation overhead was
+\(33/396=8.3\%\) relative to the training forward/adjoint solves. The
+elapsed times are included only to document the released run scale, not as
+a hardware benchmark.
+
+\begin{table*}[t]
+\centering
+\caption{Computational accounting for the primary clean cross-grid run.
+Training solves count forward plus adjoint shot solves; validation solves
+count forward-only held-out shot evaluations.}
+\label{tab:cost}
+\begin{tabular}{lrrrrr}
+\toprule
+Stage & Checkpoints & L-BFGS evals & Train solves & Val. solves & Elapsed (s) \\
+\midrule
+Warmup & 3 & 18 & 108 & 9 & 15.7 \\
+Continuation & 8 & 48 & 288 & 24 & 47.1 \\
+Total & 11 & 66 & 396 & 33 & 62.8 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.98\textwidth]{fig_validation_primary_models.pdf}
@@ -395,6 +422,33 @@ Split & Selected chunk & RMSE & SSIM & $R^2$ & Edge corr. \\
 Even-odd & 2 & 179.76 / 181.61 & 0.5241 / 0.5187 & 0.8133 / 0.8094 & 0.2648 / 0.2556 \\
 Left-center & 4 & 184.40 / 185.48 & 0.5003 / 0.4945 & 0.8035 / 0.8012 & 0.1851 / 0.1703 \\
 Outer-inner & 3 & 177.45 / 178.16 & 0.5208 / 0.5162 & 0.8181 / 0.8166 & 0.2404 / 0.2299 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Table~\ref{tab:splitsens} restates the same split repetitions as a
+sensitivity summary in terms of improvement over final continuation. The
+validation set size is fixed at three shots; this is therefore a
+sensitivity check over held-out-shot placement rather than a full
+cross-validation study. The selected checkpoint varies from chunks 2 to 4,
+but all three split definitions retain positive gains in RMSE, SSIM, and
+edge correlation.
+
+\begin{table*}[t]
+\centering
+\caption{Validation-split sensitivity on the primary crop. Gains are
+defined as final continuation minus validation-selected for RMSE, and
+validation-selected minus final continuation for SSIM and edge
+correlation.}
+\label{tab:splitsens}
+\begin{tabular}{lrrrr}
+\toprule
+Split & Selected chunk & RMSE gain (m/s) & SSIM gain & Edge-corr. gain \\
+\midrule
+Even-odd & 2 & 1.85 & 0.0054 & 0.0093 \\
+Left-center & 4 & 1.08 & 0.0058 & 0.0149 \\
+Outer-inner & 3 & 0.71 & 0.0046 & 0.0105 \\
+Mean & 3.0 & 1.21 & 0.0053 & 0.0115 \\
 \bottomrule
 \end{tabular}
 \end{table*}
