@@ -10,7 +10,7 @@ Mismatch: A Marmousi2 Cross-Grid Study
 The code implements the Marmousi2 cross-grid full-waveform inversion (FWI)
 experiments, held-out shot validation rule, saved JSON summaries, and
 figure-generation scripts used in the manuscript submitted to
-*Computers & Geosciences*.
+*Applied Computing & Geosciences*.
 
 Public repository URL to cite in the manuscript:
 
