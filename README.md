@@ -1,6 +1,6 @@
 # Held-Out Shot Validation for FWI Under Modeling Mismatch
 
-This repository contains the source code and reproducibility materials for:
+This repository contains the source code and reproducibility materials supporting the following research study:
 
 ```text
 Held-Out Shot Validation for Full-Waveform Inversion Under Modeling
@@ -9,10 +9,9 @@ Mismatch: A Marmousi2 Cross-Grid Study
 
 The code implements the Marmousi2 cross-grid full-waveform inversion (FWI)
 experiments, held-out shot validation rule, saved JSON summaries, and
-figure-generation scripts used in the manuscript submitted to
-*Applied Computing & Geosciences*.
+figure-generation scripts associated with this research.
 
-Public repository URL to cite in the manuscript:
+Repository URL:
 
 ```text
 https://github.com/schumihuang/heldout-fwi-validation
@@ -26,7 +25,7 @@ https://github.com/schumihuang/heldout-fwi-validation
   checksum metadata.
 - `data/marmousi2/vp_marmousi-ii.segy.gz` - compressed public Marmousi2
   P-wave velocity SEGY input used by the conversion script.
-- `results/` - JSON summaries used to produce manuscript tables and
+- `results/` - JSON summaries used to produce reported tables and
   validation curves.
 - `figures/` - generated validation figures in PDF/PNG format.
 - `manuscript/` - LaTeX manuscript source and referenced figure files.
